@@ -278,3 +278,17 @@ class PowtoonSharedTestCase(TestCase):
             data=json.dumps(shared_data),
         )
         self.assertEquals(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_share_for_shared_but_not_owned_user(self):
+        another_user = UserFactory(username='another_user')
+        powtoon = PowtoonFactory(user=another_user, shared_with=[self.user, ])
+
+        client.login(username=self.user.username, password='123')
+        shared_data = {'shared_with': [self.user.id, ]}
+
+        response = client.put(
+            reverse('powtoon-shared-detail', args=(powtoon.pk,)),
+            content_type='application/json',
+            data=json.dumps(shared_data),
+        )
+        self.assertEquals(response.status_code, status.HTTP_403_FORBIDDEN)

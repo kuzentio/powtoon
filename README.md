@@ -1,8 +1,8 @@
 # Powtoon assignment task
 
-### Dependencies
-Docker
-Docker-compose
+## Dependencies
+* Docker
+* Docker-compose
 
 ### For running it locally
 docker-compose up

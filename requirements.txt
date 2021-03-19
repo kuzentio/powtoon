@@ -1,5 +1,5 @@
 Django==2.2.10
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 psycopg2-binary==2.7.6.1
 factory-boy==2.11.1
 ipdb==0.11
